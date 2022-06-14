@@ -1,0 +1,83 @@
+<h2> Buscador de peliculas </h2>
+<hr>
+
+<div class="row"> 
+    <div class="col">
+        <form autocomplete="off" (ngSubmit)="buscar()">
+            <input type="text" name="termino"
+            placeholder="Realizar busqueda " 
+            class="form-control"[(ngModel)]="termino"/>
+        </form>
+        <div class="form-control center">
+            <button (click)="mostrarFiltros()"> Show Filters</button>
+        </div>
+    </div>
+</div>
+<hr>
+<div *ngIf="MostrarFiltro" class="center">
+    <div >
+        <mat-nav-list>
+            <mat-form-field appearance="fill">
+                <mat-label>Genero</mat-label>
+                <mat-select [disabled]="disableSelect.value">
+                  <mat-option value="option1">Femenino</mat-option>
+                  <mat-option value="option3">Masculino</mat-option>
+                </mat-select>
+              </mat-form-field>
+            <a  mat-list-item >
+                <mat-icon mat-list-icon>calendar_month</mat-icon>
+                <span>Fecha</span>
+            </a>
+            <a mat-list-item >
+                <mat-icon>done</mat-icon>
+                <span>Aplicar</span>
+            </a>
+            <a mat-list-item >
+                <mat-icon>restart_alt</mat-icon>
+                <span>Limpiar</span>
+            </a>
+        </mat-nav-list>
+    </div>
+</div>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th># </th>
+                    <th>Titulo </th>
+                    <th>Autor </th>
+                    <th>Genero </th>
+                    <th>Más información </th>
+                  
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of peliculas; let i = index">
+                    <td>{{ i + 1}}</td>
+                    <td>{{item.Title }}</td>
+                    <td>{{item.Actors }}</td>
+                    <td>{{item.Genre}} </td>
+                    <td><a [routerLink]="['/detalle',item.Title]">Más información.....</a> </td>
+                    <td> 
+                        <mat-icon mat-list-icon>mode_edit</mat-icon>
+                        <span>Editar</span>
+                    </td>
+                    <td>
+                        <mat-icon mat-list-icon>delete</mat-icon>
+                        <span>Borrar</span>
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+        <hr>
+       
+        {{peliculas }}
+        <p><button (click)="agregar()">Agregar</button>
+            <button (click)="agregar()">Modificar</button></p>
+    </div>
+</div>

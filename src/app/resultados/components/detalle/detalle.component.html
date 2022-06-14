@@ -1,0 +1,16 @@
+<div>
+<a routerLink="''"><span class="material-icons">
+    arrow_back
+    </span></a>
+<h2 class="center"> Detalle de la pelicula elegida</h2>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <h1> Pelicula: {{pelicula.Title}}</h1>
+        <h1> Actor: {{pelicula.Actors}}</h1>
+        <h1> Genero: {{pelicula.Genre}}</h1>
+        <h1> Fecha: {{pelicula.Released}}</h1>
+        <img class="small-flag" [src]="pelicula.Poster">
+    </div>
+</div>
